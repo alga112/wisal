@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>وصال | نحو وصول أسرع للدعم الصحي</title>
+<meta name="description" content="شارك برأيك في «وصال» — منصة ذكية تربط الجهات الصحية المحتاجة بالجمعيات القادرة على تلبية احتياجاتها.">
+<meta property="og:title" content="وصال | شارك برأيك في 3 دقائق">
+<meta property="og:description" content="منصة ذكية تربط الاحتياج الصحي بمن يقدر يلبّيه. رأيك يصنع الفرق.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Readex+Pro:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230E6B63'/%3E%3Ccircle cx='20' cy='32' r='8' fill='%23fff'/%3E%3Ccircle cx='44' cy='32' r='8' fill='%23F4B860'/%3E%3Cpath d='M28 32h8' stroke='%23fff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#0B2B2A; --ink-2:#3E5A58; --muted:#6F8785;
+  --teal:#0E6B63; --teal-2:#14897E; --mint:#DDF3EE; --mint-2:#EEF9F6;
+  --gold:#F4B860; --coral:#E8735A;
+  --bg:#F7FBFA; --card:#FFFFFF; --line:#E1ECEA;
+  --r:20px; --shadow:0 1px 2px rgba(11,43,42,.04),0 12px 32px -12px rgba(11,43,42,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.display{font-family:"Readex Pro","IBM Plex Sans Arabic",sans-serif;letter-spacing:-.01em;line-height:1.3}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.4) blur(14px);background:rgba(247,251,250,.78);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Readex Pro";font-weight:700;font-size:22px;color:var(--teal)}
+.brand svg{width:36px;height:36px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:16px;transition:transform .2s, box-shadow .2s, background .2s}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 24px -10px rgba(14,107,99,.7)}
+.btn-primary:hover{background:var(--teal-2);transform:translateY(-2px)}
+.btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
+.btn-sm{padding:9px 18px;font-size:14px}
+.hero{position:relative;padding:72px 0 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:720px;height:720px;background:radial-gradient(closest-side,rgba(20,137,126,.16),transparent);z-index:-1}
+.hero::after{content:"";position:absolute;inset:auto auto -30% -10%;width:600px;height:600px;background:radial-gradient(closest-side,rgba(244,184,96,.18),transparent);z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:6px 14px 6px 8px;border-radius:999px;font-size:13.5px;color:var(--ink-2);font-weight:500}
+.eyebrow b{background:var(--mint);color:var(--teal);padding:2px 10px;border-radius:999px;font-weight:600}
+.hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:700;margin:22px 0 18px}
+.hero h1 .hl{color:var(--teal);position:relative;white-space:nowrap}
+.hero h1 .hl::after{content:"";position:absolute;right:0;left:0;bottom:4px;height:12px;background:var(--gold);opacity:.35;border-radius:6px;z-index:-1}
+.hero p.lead{font-size:19px;color:var(--ink-2);max-width:560px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;align-items:center}
+.meta{display:flex;gap:22px;margin-top:28px;color:var(--muted);font-size:14px;flex-wrap:wrap}
+.meta span{display:flex;align-items:center;gap:6px}
+.meta svg{width:18px;height:18px;color:var(--teal)}
+.viz{position:relative;aspect-ratio:1/1;max-width:460px;justify-self:center;width:100%}
+.viz-card{position:absolute;background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:14px 16px;display:flex;align-items:center;gap:12px;font-size:14px;border:1px solid var(--line)}
+.viz-card .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+.viz-card small{display:block;color:var(--muted);font-size:12px;line-height:1.4}
+.viz-card strong{font-weight:600;line-height:1.4;display:block}
+.vc1{top:6%;right:0;animation:float 6s ease-in-out infinite}
+.vc2{bottom:8%;left:0;animation:float 6s ease-in-out infinite 1.5s}
+.vc4{bottom:30%;right:4%;animation:float 6.5s ease-in-out infinite 2.2s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.flow-dash{stroke-dasharray:6 8;animation:dash 1.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-28}}
+section{padding:88px 0}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 52px}
+.sec-head .tag{color:var(--teal);font-weight:600;font-size:14px;letter-spacing:.02em}
+.sec-head h2{font-size:clamp(28px,3.6vw,40px);margin:8px 0 12px}
+.sec-head p{color:var(--ink-2);font-size:17px}
+.problems{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.prob{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;transition:transform .25s, box-shadow .25s}
+.prob:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.prob .n{font-family:"Readex Pro";font-size:13px;color:var(--coral);font-weight:600}
+.prob h3{font-size:18px;margin:10px 0 8px}
+.prob p{color:var(--muted);font-size:14.5px;line-height:1.7}
+.prob .pi{width:46px;height:46px;border-radius:14px;background:#FDEEEA;color:var(--coral);display:grid;place-items:center;margin-bottom:14px}
+.how{background:linear-gradient(180deg,#fff, var(--mint-2));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.steps::before{content:"";position:absolute;top:34px;right:12%;left:12%;border-top:2px dashed #BFDCD7;z-index:0}
+.step{position:relative;z-index:1;text-align:center;padding:0 8px}
+.step .si{width:68px;height:68px;margin:0 auto 18px;border-radius:22px;background:var(--teal);color:#fff;display:grid;place-items:center;box-shadow:0 12px 24px -10px rgba(14,107,99,.6)}
+.step:nth-child(2) .si{background:var(--teal-2)}
+.step:nth-child(3) .si{background:#2A9D8F}
+.step:nth-child(4) .si{background:var(--gold);color:var(--ink)}
+.step h3{font-size:18px;margin-bottom:6px}
+.step p{font-size:14.5px;color:var(--ink-2)}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+.ben{display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:16px;padding:20px;border:1px solid var(--line)}
+.ben .bi{width:40px;height:40px;border-radius:12px;background:var(--mint);color:var(--teal);display:grid;place-items:center;flex-shrink:0}
+.ben h4{font-size:16px;font-weight:600}
+.ben p{font-size:14px;color:var(--muted);line-height:1.6}
+#survey{padding-top:96px}
+.survey-shell{max-width:760px;margin:0 auto;background:#fff;border-radius:28px;box-shadow:0 30px 80px -30px rgba(11,43,42,.28);border:1px solid var(--line);overflow:hidden;position:relative}
+.sv-top{padding:22px 28px 0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.sv-sec{font-size:13.5px;color:var(--teal);font-weight:600;display:flex;align-items:center;gap:8px}
+.sv-count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{height:6px;background:var(--mint-2);margin:16px 28px 0;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--teal));border-radius:99px;transition:width .5s cubic-bezier(.2,.8,.2,1);margin-right:0;margin-left:auto}
+.stage{padding:34px 28px 28px;min-height:420px;display:flex;flex-direction:column}
+.q{animation:qin .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes qin{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+.q.back{animation:qback .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes qback{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.q h3{font-size:clamp(20px,2.6vw,25px);font-weight:600;margin-bottom:6px}
+.q .hint{color:var(--muted);font-size:14px;margin-bottom:22px}
+.opts{display:grid;gap:10px;margin-top:18px}
+.opt{display:flex;align-items:center;gap:14px;text-align:right;padding:15px 18px;border:1.5px solid var(--line);border-radius:14px;font-size:16px;background:#fff;transition:all .18s;width:100%}
+.opt:hover{border-color:#9FCFC8;background:var(--mint-2)}
+.opt .k{width:28px;height:28px;border-radius:8px;border:1.5px solid #C9DCD9;display:grid;place-items:center;font-size:12px;color:var(--muted);flex-shrink:0;font-family:"Readex Pro";transition:all .18s}
+.opt.multi .k{border-radius:7px}
+.opt.sel{border-color:var(--teal);background:var(--mint);box-shadow:0 0 0 3px rgba(14,107,99,.1)}
+.opt.sel .k{background:var(--teal);border-color:var(--teal);color:#fff}
+.opt.disabled{opacity:.45;pointer-events:none}
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.role{border:1.5px solid var(--line);border-radius:18px;padding:24px 16px;text-align:center;transition:all .2s;background:#fff}
+.role:hover{border-color:#9FCFC8;transform:translateY(-3px);box-shadow:var(--shadow)}
+.role.sel{border-color:var(--teal);background:var(--mint)}
+.role .ri{width:58px;height:58px;border-radius:18px;margin:0 auto 12px;display:grid;place-items:center;background:var(--mint-2);color:var(--teal)}
+.role.sel .ri{background:var(--teal);color:#fff}
+.role strong{display:block;font-size:16px;margin-bottom:4px}
+.role small{color:var(--muted);font-size:13px;line-height:1.5;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chip{padding:11px 18px;border:1.5px solid var(--line);border-radius:999px;font-size:15px;background:#fff;transition:all .18s}
+.chip:hover{border-color:#9FCFC8}
+.chip.sel{background:var(--teal);border-color:var(--teal);color:#fff}
+.scale{display:flex;gap:8px;margin-top:22px;direction:ltr;justify-content:center}
+.scale button{flex:1;max-width:72px;aspect-ratio:1/1;border-radius:14px;border:1.5px solid var(--line);font-family:"Readex Pro";font-size:20px;font-weight:600;background:#fff;transition:all .18s;color:var(--ink-2)}
+.scale button:hover{border-color:var(--teal);transform:translateY(-2px)}
+.scale button.sel{background:var(--teal);border-color:var(--teal);color:#fff;transform:translateY(-2px) scale(1.04)}
+.scale.nps{gap:6px}
+.scale.nps button{font-size:16px;border-radius:12px;max-width:56px}
+.scale.nps button.sel.lo{background:var(--coral);border-color:var(--coral)}
+.scale.nps button.sel.mid{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.scale-labels{display:flex;justify-content:space-between;margin-top:10px;font-size:13px;color:var(--muted);direction:ltr}
+textarea,input[type=text]{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;font-family:inherit;font-size:16px;color:var(--ink);background:#fff;resize:vertical;transition:border-color .2s;margin-top:18px}
+textarea{min-height:130px}
+textarea:focus,input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,107,99,.1)}
+.other-in{margin-top:10px;display:none}
+.other-in.show{display:block}
+.sv-foot{margin-top:auto;padding-top:28px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.nav-back{color:var(--muted);font-size:15px;display:flex;align-items:center;gap:6px;padding:10px 4px}
+.nav-back:hover{color:var(--teal)}
+.nav-back[hidden]{visibility:hidden;display:flex}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.err{color:var(--coral);font-size:14px;margin-top:12px;min-height:20px}
+.sec-intro{text-align:center;padding:20px 0}
+.sec-intro .big{width:84px;height:84px;margin:0 auto 18px;border-radius:26px;background:var(--mint);color:var(--teal);display:grid;place-items:center}
+.sec-intro h3{font-size:26px;margin-bottom:8px}
+.sec-intro p{color:var(--ink-2);max-width:480px;margin:0 auto}
+.flow-mini{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px}
+.flow-mini span{background:var(--mint-2);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13.5px;color:var(--ink-2)}
+.flow-mini i{color:var(--teal);font-style:normal;align-self:center}
+.done{text-align:center;padding:24px 0}
+.done .check{width:96px;height:96px;margin:0 auto 20px;border-radius:50%;background:var(--teal);display:grid;place-items:center;color:#fff;animation:pop .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.done h3{font-size:30px;margin-bottom:10px}
+.done p{color:var(--ink-2);max-width:460px;margin:0 auto 26px}
+.share{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.kbd-hint{font-size:12.5px;color:var(--muted)}
+@media (hover:none){.kbd-hint{display:none}}
+footer{padding:44px 0 56px;text-align:center;color:var(--muted);font-size:14px}
+footer .brand{justify-content:center;margin-bottom:10px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s, transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .viz{max-width:380px;order:-1}
+  .problems{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:36px}
+  .steps::before{display:none}
+  .benefits{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  section{padding:64px 0}
+  .hero{padding:40px 0 64px}
+  .problems{grid-template-columns:1fr}
+  .role-grid{grid-template-columns:1fr}
+  .role{display:flex;align-items:center;gap:14px;text-align:right;padding:16px}
+  .role .ri{margin:0;width:50px;height:50px;flex-shrink:0}
+  .stage{padding:28px 20px 22px;min-height:460px}
+  .sv-top{padding:18px 20px 0}.bar{margin:14px 20px 0}
+  .scale.nps{flex-wrap:wrap;justify-content:center}
+  .scale.nps button{flex:0 0 calc(16.66% - 6px);font-size:15px}
+  .nav-cta{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="logo" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#0E6B63"/><circle cx="20" cy="32" r="8" fill="#fff"/><circle cx="44" cy="32" r="8" fill="#F4B860"/><path d="M28 32h8" stroke="#fff" stroke-width="4" stroke-linecap="round"/></symbol>
+    <symbol id="i-hosp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M12 9v6M9 12h6"/><path d="M10 21v-3h4v3"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 14h2a2 2 0 0 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 15 6 6"/><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.200.8 2 1.5 2.8L16 12Z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75M21 21v-2a4 4 0 0 0-3-3.850"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h.01M12 9h.01M16 9h.01"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24M10.73 5.08A10.4 10.4 0 0 1 12 5c7 0 10 7 10 7a13 13 0 0 1-1.67 2.68M6.61 6.61A13.5 13.5 0 0 0 2 12s3 7 10 7a9.7 9.7 0 0 0 5.39-1.61M2 2l20 20"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></symbol>
+    <symbol id="i-match" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.1 6.5 9.9 4.4a2 2 0 0 0-1.8 0L3.6 6.7A1 1 0 0 0 3 7.6v12.8a1 1 0 0 0 1.4.9l3.7-1.9a2 2 0 0 1 1.8 0l4.2 2.1a2 2 0 0 0 1.8 0l4.5-2.3a1 1 0 0 0 .6-.9V5.6a1 1 0 0 0-1.4-.9l-3.7 1.9a2 2 0 0 1-1.8 0z"/><path d="M15 5.8v15M9 3.2v15"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+    <symbol id="i-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.920 1-3 1s-2.130-.35-3-1ZM2 16l3-8 3 8c-.87.65-1.920 1-3 1s-2.130-.35-3-1Z"/><path d="M7 21h10M12 3v18M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5M9 18h6M10 22h4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  </defs>
+</svg>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#" class="brand"><svg><use href="#logo"/></svg>وصال</a>
+    <a href="#survey" class="btn btn-primary btn-sm nav-cta">شارك برأيك</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><b>تنمية ثون</b> مشروع مشارك في الهاكاثون</span>
+      <h1>نوصل <span class="hl">الاحتياج الصحي</span><br>بمن يقدر يلبّيه</h1>
+      <p class="lead">«وصال» منصة ذكية تربط المستشفيات والمنشآت الصحية المحتاجة بالجمعيات والجهات الداعمة، وتتابع الدعم من لحظة الطلب حتى يصل ويُتحقق منه. رأيك اليوم يحدد كيف نبنيها.</p>
+      <div class="hero-cta">
+        <a href="#survey" class="btn btn-primary">ابدأ الاستبيان <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+        <a href="#how" class="btn btn-ghost">كيف يعمل وصال؟</a>
+      </div>
+      <div class="meta">
+        <span><svg><use href="#i-clock"/></svg>3 دقائق فقط</span>
+        <span><svg><use href="#i-lock"/></svg>إجابات سرية ومجهولة</span>
+        <span><svg><use href="#i-globe"/></svg>لجميع مناطق المملكة</span>
+      </div>
+    </div>
+
+    <div class="viz" aria-hidden="true">
+      <svg viewBox="0 0 400 400" width="100%" height="100%">
+        <defs>
+          <radialGradient id="g1"><stop offset="0" stop-color="#14897E" stop-opacity=".18"/><stop offset="1" stop-color="#14897E" stop-opacity="0"/></radialGradient>
+        </defs>
+        <circle cx="200" cy="200" r="190" fill="url(#g1)"/>
+        <circle cx="200" cy="200" r="140" fill="none" stroke="#CFE5E1" stroke-dasharray="3 7"/>
+        <circle cx="200" cy="200" r="90" fill="none" stroke="#CFE5E1" stroke-dasharray="3 7"/>
+        <path class="flow-dash" d="M120 110 Q200 160 200 200" stroke="#14897E" stroke-width="2.5" fill="none"/>
+        <path class="flow-dash" d="M280 300 Q200 250 200 200" stroke="#F4B860" stroke-width="2.5" fill="none"/>
+        <path class="flow-dash" d="M95 250 Q150 215 200 200" stroke="#14897E" stroke-width="2" fill="none" opacity=".6"/>
+        <path class="flow-dash" d="M310 150 Q250 185 200 200" stroke="#F4B860" stroke-width="2" fill="none" opacity=".6"/>
+        <circle r="5" fill="#0E6B63"><animateMotion dur="2.6s" repeatCount="indefinite" path="M120 110 Q200 160 200 200"/></circle>
+        <circle r="5" fill="#E8A13D"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M280 300 Q200 250 200 200"/></circle>
+        <circle cx="200" cy="200" r="46" fill="#0E6B63"/>
+        <circle cx="200" cy="200" r="46" fill="none" stroke="#0E6B63" stroke-opacity=".25" stroke-width="10"><animate attributeName="r" values="46;64;46" dur="3s" repeatCount="indefinite"/><animate attributeName="stroke-opacity" values=".3;0;.3" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="186" cy="200" r="9" fill="#fff"/><circle cx="214" cy="200" r="9" fill="#F4B860"/><path d="M195 200h10" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <div class="viz-card vc1"><div class="ic" style="background:#E6F4F1;color:#0E6B63"><svg width="22" height="22"><use href="#i-hosp"/></svg></div><div><strong>مستشفى · الرياض</strong><small>يحتاج 12 كرسي متحرك · عاجل</small></div></div>
+      <div class="viz-card vc2"><div class="ic" style="background:#FDF3E3;color:#C98522"><svg width="22" height="22"><use href="#i-hand"/></svg></div><div><strong>جمعية داعمة</strong><small>تم التطابق · 4 كم</small></div></div>
+      <div class="viz-card vc4"><div class="ic" style="background:#E6F4F1;color:#0E6B63"><svg width="20" height="20"><use href="#i-check"/></svg></div><div><strong>تم التسليم</strong><small>والتحقق من الوصول</small></div></div>
+    </div>
+  </div>
+</header>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">المشكلة</span>
+      <h2>الدعم موجود… لكنه ما يوصل بسهولة</h2>
+      <p>الجهات الصحية والجهات الداعمة يعتمدون اليوم على البحث والتنسيق اليدوي، فيتأخر الدعم ويتكرر في مكان ويغيب عن مكان ثاني.</p>
+    </div>
+    <div class="problems">
+      <div class="prob reveal"><div class="pi"><svg width="22" height="22"><use href="#i-search"/></svg></div><span class="n">01</span><h3>صعوبة الوصول</h3><p>المنشأة الصحية ما تعرف أي جهة داعمة تقدر توفر احتياجها.</p></div>
+      <div class="prob reveal"><div class="pi"><svg width="22" height="22"><use href="#i-chat"/></svg></div><span class="n">02</span><h3>تشتت التنسيق</h3><p>اتصالات ورسائل وقنوات متفرقة بدل مسار واحد واضح.</p></div>
+      <div class="prob reveal"><div class="pi"><svg width="22" height="22"><use href="#i-eye"/></svg></div><span class="n">03</span><h3>بيانات غير واضحة</h3><p>لا صورة محدّثة عن الموارد المتاحة ولا عن أماكن الاحتياج الفعلي.</p></div>
+      <div class="prob reveal"><div class="pi"><svg width="22" height="22"><use href="#i-route"/></svg></div><span class="n">04</span><h3>تتبع ضعيف</h3><p>صعب تعرف وين وصل الطلب، وهل الدعم وصل فعلًا لمستحقه.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">الحل</span>
+      <h2>كيف يعمل «وصال»؟</h2>
+      <p>أربع خطوات تحوّل التنسيق اليدوي إلى مسار ذكي واحد، من الطلب حتى التحقق.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="si"><svg width="30" height="30"><use href="#i-plus"/></svg></div><h3>تسجيل الاحتياج</h3><p>المستشفى يسجّل احتياجه بالكمية والموقع والأولوية.</p></div>
+      <div class="step reveal"><div class="si"><svg width="30" height="30"><use href="#i-match"/></svg></div><h3>مطابقة ذكية</h3><p>النظام يبحث تلقائيًا عن أقرب جهة داعمة تملك المورد.</p></div>
+      <div class="step reveal"><div class="si"><svg width="30" height="30"><use href="#i-truck"/></svg></div><h3>تتبع حتى التسليم</h3><p>متابعة الطلب من الموافقة إلى الاستلام خطوة بخطوة.</p></div>
+      <div class="step reveal"><div class="si"><svg width="30" height="30"><use href="#i-map"/></svg></div><h3>تحقق وخريطة حية</h3><p>تأكيد وصول الدعم، ولوحة إشرافية لوزارة الصحة.</p></div>
+    </div>
+    <div class="benefits">
+      <div class="ben reveal"><div class="bi"><svg width="20" height="20"><use href="#i-bolt"/></svg></div><div><h4>وصول أسرع</h4><p>الموارد توصل للمحتاج بأيام بدل أسابيع.</p></div></div>
+      <div class="ben reveal"><div class="bi"><svg width="20" height="20"><use href="#i-leaf"/></svg></div><div><h4>هدر أقل</h4><p>لا ازدواجية في الدعم ولا موارد مكدّسة بلا حاجة.</p></div></div>
+      <div class="ben reveal"><div class="bi"><svg width="20" height="20"><use href="#i-scale"/></svg></div><div><h4>توزيع عادل</h4><p>الدعم يتوزع حسب الاحتياج الفعلي في كل منطقة.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="survey">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="tag">الاستبيان</span>
+      <h2>رأيك يصنع «وصال»</h2>
+      <p>سواء كنت تعمل في القطاع الصحي، أو في جمعية، أو فردًا من المجتمع، تجربتك تساعدنا نبني حلًا حقيقيًا.</p>
+    </div>
+    <div class="survey-shell reveal" id="shell">
+      <div class="sv-top"><div class="sv-sec" id="svSec"></div><div class="sv-count" id="svCount"></div></div>
+      <div class="bar"><i id="bar"></i></div>
+      <div class="stage" id="stage"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand"><svg width="30" height="30"><use href="#logo"/></svg>وصال</div>
+  <p>مشروع مشارك في هاكاثون «تنمية ثون» · نحو وصول أسرع للدعم الصحي</p>
+</footer>
+
+<iframe name="gf_sink" id="gf_sink" style="display:none" title="sink"></iframe>
+<form id="gf" method="POST" target="gf_sink" action="https://docs.google.com/forms/d/e/1FAIpQLSc2UqyPzFuDXNAxJVnOqet4bxoaUfGBpcNs2s4qoSn9cAT8FA/formResponse" style="display:none"></form>
+
+<script>
+const FIVE_FREQ=['دائمًا','غالبًا','أحيانًا','نادرًا','أبدًا'];
+const FIVE_EASE=['سهل جدًا','سهل','متوسط','صعب','صعب جدًا'];
+const TRACK=['نعم، بشكل كامل','نعم، ولكن بشكل جزئي','أحيانًا','لا'];
+
+const Q = {
+  role:{id:'1087713041',type:'role',title:'ما الصفة التي تنطبق عليك أكثر؟',hint:'نخصص لك الأسئلة حسب تجربتك.',
+    options:[
+      {v:'أعمل في منشأة صحية (مستشفى، مركز صحي، مختبر...)',label:'منشأة صحية',sub:'مستشفى، مركز صحي، مختبر',icon:'i-hosp',page:1},
+      {v:'أعمل أو أتطوع في جمعية / جهة داعمة',label:'جمعية / جهة داعمة',sub:'أعمل أو أتطوع فيها',icon:'i-hand',page:2},
+      {v:'فرد من المجتمع (مريض، مرافق، متبرع، مهتم)',label:'فرد من المجتمع',sub:'مريض، مرافق، متبرع، مهتم',icon:'i-user',page:3}]},
+  region:{id:'1909239414',type:'chips',title:'في أي منطقة تقيم؟',options:['الرياض','مكة المكرمة','المدينة المنورة','المنطقة الشرقية','القصيم','عسير','تبوك','حائل','الحدود الشمالية','جازان','نجران','الباحة','الجوف']},
+  age:{id:'1065539124',type:'chips',title:'ما فئتك العمرية؟',options:['أقل من 18','18 – 24','25 – 34','35 – 44','45 – 54','55 فأكثر']},
+
+  h1:{id:'1967763175',type:'single',title:'هل تواجه منشأتكم صعوبة في الوصول إلى جمعية أو جهة داعمة تستطيع توفير الموارد الصحية المطلوبة؟',options:FIVE_FREQ},
+  h2:{id:'624255696',type:'single',title:'كيف تقيّمون سهولة التنسيق والتواصل مع الجهات الداعمة لتوفير الاحتياجات الصحية؟',options:FIVE_EASE},
+  h3:{id:'802577762',type:'single',title:'هل تتوفر لديكم معلومات واضحة ومحدّثة عن الموارد المتاحة لدى الجهات الداعمة؟',options:['متوفرة دائمًا','متوفرة غالبًا','متوفرة أحيانًا','نادرًا ما تتوفر','غير متوفرة']},
+  h4:{id:'181815277',type:'single',title:'هل يمكنكم متابعة حالة طلب توفير الموارد من وقت تقديمه حتى استلامه؟',options:TRACK},
+  h5:{id:'1941897139',type:'single',title:'كم يستغرق عادةً توفير احتياج عبر جهة داعمة؟',options:['أقل من أسبوع','من أسبوع إلى شهر','من 1 إلى 3 أشهر','أكثر من 3 أشهر','غالبًا لا يتم توفيره']},
+  h6:{id:'2084463145',type:'multi',other:true,title:'ما أكثر الاحتياجات التي تواجهون صعوبة في توفيرها؟',hint:'يمكنك اختيار أكثر من إجابة.',options:['أجهزة طبية','كراسي متحركة وأدوات تنقل','أسرّة طبية','مستلزمات طبية استهلاكية','أجهزة أكسجين وتنفس','أدوية']},
+
+  d1:{id:'1507889752',type:'single',title:'هل تواجهون صعوبة في معرفة المنشآت الصحية الأكثر احتياجًا لمواردكم؟',options:FIVE_FREQ},
+  d2:{id:'1948621001',type:'single',title:'كيف تقيّمون سهولة التنسيق والتواصل مع المنشآت الصحية؟',options:FIVE_EASE},
+  d3:{id:'1423568216',type:'single',title:'هل سبق أن ذهب دعم لجهة لا تحتاجه فعليًا، أو تكرر الدعم لنفس الجهة؟',hint:'أي حالات هدر أو ازدواجية في الدعم.',options:['نعم، كثيرًا','نعم، أحيانًا','نادرًا','لا','لا أعلم']},
+  d4:{id:'1420261031',type:'single',title:'هل يمكنكم التحقق من وصول الدعم واستخدامه فعليًا بعد التسليم؟',options:TRACK},
+
+  p1:{id:'116133160',type:'single',title:'هل سبق أن احتجت أنت أو أحد أقاربك جهازًا أو مستلزمًا طبيًا وواجهت صعوبة في الحصول عليه؟',hint:'مثل كرسي متحرك، سرير طبي، جهاز أكسجين…',options:['نعم، وكانت الصعوبة كبيرة','نعم، بصعوبة بسيطة','لا، حصلنا عليه بسهولة','لم نحتج لذلك']},
+  p2:{id:'734792539',type:'single',title:'لو احتجت دعمًا صحيًا اليوم، هل تعرف الجهة المناسبة التي تتواصل معها؟',options:['نعم، أعرفها جيدًا','لدي فكرة غير واضحة','لا أعرف']},
+  p3:{id:'538115841',type:'scale',min:1,max:5,lo:'لا أثق إطلاقًا',hi:'أثق تمامًا',title:'ما مدى ثقتك بأن التبرعات والدعم الصحي يصل فعلًا لمن يحتاجه؟'},
+  p4:{id:'233177816',type:'single',title:'لو وُجدت منصة تُظهر لك الاحتياج الحقيقي وتؤكد وصول تبرعك، هل سيزيد ذلك من رغبتك في الدعم؟',options:['نعم، بشكل كبير','نعم، إلى حد ما','لن يغيّر شيئًا']},
+
+  w1:{id:'491804429',type:'scale',min:1,max:5,lo:'غير مهمة',hi:'مهمة جدًا',title:'ما مدى أهمية وجود منصة وطنية موحّدة تربط الاحتياجات الصحية بالجهات الداعمة؟'},
+  w2:{id:'1356846819',type:'multi',max:3,title:'ما أهم مزايا «وصال» من وجهة نظرك؟',hint:'اختر حتى 3 مزايا.',options:['المطابقة الذكية مع أقرب جهة داعمة مناسبة','تتبّع الطلب لحظة بلحظة حتى التسليم','التحقق من وصول الدعم لمستحقيه','خريطة حية توضح أماكن الاحتياج وحجمه','لوحة إشرافية لوزارة الصحة والجهات المعنية','تقليل الهدر والازدواجية في الدعم','تحديد أولوية الاحتياجات العاجلة']},
+  w3:{id:'117524760',type:'single',title:'هل تعتقد أن «وصال» سيُسرّع وصول الموارد الصحية للمحتاجين؟',options:['نعم بالتأكيد','ربما','لا']},
+  w4:{id:'1266106887',type:'nps',min:0,max:10,lo:'مستبعد تمامًا',hi:'مؤكد جدًا',title:'ما احتمالية أن تستخدم «وصال» أو توصي به لغيرك؟'},
+  w5:{id:'388435600',type:'text',optional:true,title:'هل لديك قصة أو اقتراح يساعدنا في تطوير «وصال»؟',hint:'اختياري، لكنه يفرق معنا كثير 💚'}
+};
+
+const SECTIONS={
+  0:{name:'تعريف بك',icon:'i-user',items:['role','region','age']},
+  1:{name:'المنشآت الصحية',icon:'i-hosp',items:['h1','h2','h3','h4','h5','h6'],intro:{t:'أسئلة المنشآت الصحية',p:'نبي نفهم واقع توفير الاحتياجات في منشأتكم. 6 أسئلة سريعة.'}},
+  2:{name:'الجهات الداعمة',icon:'i-hand',items:['d1','d2','d3','d4'],intro:{t:'أسئلة الجمعيات والجهات الداعمة',p:'كيف توصل مواردكم للجهات الصحية المحتاجة؟ 4 أسئلة سريعة.'}},
+  3:{name:'تجربتك',icon:'i-globe',items:['p1','p2','p3','p4'],intro:{t:'تجربتك كفرد من المجتمع',p:'تجربتك الشخصية أو تجربة من حولك تهمنا. 4 أسئلة سريعة.'}},
+  4:{name:'رأيك في وصال',icon:'i-bulb',items:['w1','w2','w3','w4','w5'],intro:{t:'رأيك في «وصال»',p:'باقي خطوة أخيرة. وهذي فكرة وصال باختصار:',flow:true}}
+};
+
+const ans={}; let steps=[]; let idx=0; let dir=1;
+const $=s=>document.querySelector(s);
+const stage=$('#stage');
+
+function buildSteps(){
+  const r=Q.role.options.find(o=>o.v===ans.role);
+  const pages=[0]; if(r) pages.push(r.page); pages.push(4);
+  steps=[];
+  pages.forEach(p=>{
+    const s=SECTIONS[p];
+    if(s.intro) steps.push({kind:'intro',sec:p});
+    s.items.forEach(k=>steps.push({kind:'q',key:k,sec:p}));
+  });
+  steps.push({kind:'submit'});
+  return pages;
+}
+buildSteps();
+
+function qCount(){return steps.filter(s=>s.kind==='q').length}
+function qIndex(){return steps.slice(0,idx+1).filter(s=>s.kind==='q').length}
+
+function render(){
+  const st=steps[idx];
+  const sec=SECTIONS[st.sec]||SECTIONS[4];
+  $('#svSec').innerHTML=st.kind==='submit'?'':`<svg width="18" height="18"><use href="#${sec.icon}"/></svg>${sec.name}`;
+  const total=ans.role?qCount():12;
+  $('#svCount').textContent=st.kind==='q'?`${qIndex()} / ${total}`:'';
+  const pct=st.kind==='submit'?100:Math.round((qIndex()-(st.kind==='q'?1:0))/total*100);
+  $('#bar').style.width=pct+'%';
+  const cls='q'+(dir<0?' back':'');
+  if(st.kind==='intro'){
+    const it=sec.intro;
+    stage.innerHTML=`<div class="${cls} sec-intro"><div class="big"><svg width="40" height="40"><use href="#${sec.icon}"/></svg></div><h3>${it.t}</h3><p>${it.p}</p>${it.flow?`<div class="flow-mini"><span>تسجيل الاحتياج</span><i>←</i><span>مطابقة ذكية</span><i>←</i><span>تتبع حتى التسليم</span><i>←</i><span>تحقق وخريطة حية</span></div>`:''}</div>${foot('يلا نكمل')}`;
+    bindFoot(); return;
+  }
+  if(st.kind==='submit'){submit();return;}
+  const q=Q[st.key]; const v=ans[st.key];
+  let body='';
+  if(q.type==='role'){
+    body=`<div class="role-grid">${q.options.map((o,i)=>`<button class="role ${v===o.v?'sel':''}" data-i="${i}"><div class="ri"><svg width="28" height="28"><use href="#${o.icon}"/></svg></div><div><strong>${o.label}</strong><small>${o.sub}</small></div></button>`).join('')}</div>`;
+  }else if(q.type==='chips'){
+    body=`<div class="chips">${q.options.map((o,i)=>`<button class="chip ${v===o?'sel':''}" data-i="${i}">${o}</button>`).join('')}</div>`;
+  }else if(q.type==='single'){
+    body=`<div class="opts">${q.options.map((o,i)=>`<button class="opt ${v===o?'sel':''}" data-i="${i}"><span class="k">${String.fromCharCode(65+i)}</span>${o}</button>`).join('')}</div>`;
+  }else if(q.type==='multi'){
+    const arr=v||[]; const full=q.max&&arr.length>=q.max;
+    body=`<div class="opts">${q.options.map((o,i)=>{const s=arr.includes(o);return `<button class="opt multi ${s?'sel':''} ${full&&!s?'disabled':''}" data-i="${i}"><span class="k">${s?'✓':''}</span>${o}</button>`}).join('')}
+    ${q.other?`<button class="opt multi ${ans[st.key+'_other']!==undefined?'sel':''}" data-other="1"><span class="k">${ans[st.key+'_other']!==undefined?'✓':''}</span>أخرى</button><input type="text" class="other-in ${ans[st.key+'_other']!==undefined?'show':''}" id="otherIn" placeholder="اكتب الاحتياج…" value="${(ans[st.key+'_other']||'').replace(/"/g,'&quot;')}">`:''}</div>`;
+  }else if(q.type==='scale'||q.type==='nps'){
+    const nums=[];for(let n=q.min;n<=q.max;n++)nums.push(n);
+    body=`<div class="scale ${q.type==='nps'?'nps':''}">${nums.map(n=>{let c=String(v)===String(n)?'sel':'';if(q.type==='nps'&&c){c+=n<=6?' lo':n<=8?' mid':''}return `<button class="${c}" data-n="${n}">${n}</button>`}).join('')}</div><div class="scale-labels"><span>${q.lo}</span><span>${q.hi}</span></div>`;
+  }else if(q.type==='text'){
+    body=`<textarea id="txt" placeholder="اكتب هنا…">${v||''}</textarea>`;
+  }
+  const last=steps[idx+1]&&steps[idx+1].kind==='submit';
+  stage.innerHTML=`<div class="${cls}"><h3>${q.title}</h3>${q.hint?`<p class="hint">${q.hint}</p>`:''}${body}<div class="err" id="err"></div></div>${foot(last?'إرسال الإجابات':'التالي')}`;
+  bind(q,st.key); bindFoot();
+}
+
+function foot(label){
+  return `<div class="sv-foot"><button class="nav-back" id="back" ${idx===0?'hidden':''}><svg width="16" height="16" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg>السابق</button><div style="display:flex;align-items:center;gap:14px"><span class="kbd-hint">اضغط Enter ↵</span><button class="btn btn-primary" id="next">${label} <svg width="18" height="18"><use href="#i-arrow"/></svg></button></div></div>`;
+}
+function bindFoot(){
+  $('#next').onclick=next;
+  const b=$('#back'); if(b) b.onclick=()=>{if(idx>0){idx--;dir=-1;render();}};
+}
+function autoNext(){setTimeout(next,280)}
+
+function bind(q,key){
+  if(q.type==='role'){
+    stage.querySelectorAll('.role').forEach(b=>b.onclick=()=>{ans.role=q.options[+b.dataset.i].v;buildSteps();render();autoNext();});
+  }else if(q.type==='chips'){
+    stage.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{ans[key]=q.options[+b.dataset.i];render();autoNext();});
+  }else if(q.type==='single'){
+    stage.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ans[key]=q.options[+b.dataset.i];render();autoNext();});
+  }else if(q.type==='multi'){
+    stage.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      if(b.dataset.other){ if(ans[key+'_other']===undefined) ans[key+'_other']=''; else delete ans[key+'_other']; render(); const o=$('#otherIn'); if(o&&ans[key+'_other']!==undefined)o.focus(); return;}
+      const arr=ans[key]||[]; const o=q.options[+b.dataset.i];
+      ans[key]=arr.includes(o)?arr.filter(x=>x!==o):[...arr,o]; render();
+    });
+    const oi=$('#otherIn'); if(oi) oi.oninput=e=>ans[key+'_other']=e.target.value;
+  }else if(q.type==='scale'||q.type==='nps'){
+    stage.querySelectorAll('.scale button').forEach(b=>b.onclick=()=>{ans[key]=b.dataset.n;render();autoNext();});
+  }else if(q.type==='text'){
+    const t=$('#txt'); t.oninput=e=>ans[key]=e.target.value; setTimeout(()=>t.focus({preventScroll:true}),50);
+  }
+}
+
+function valid(){
+  const st=steps[idx]; if(st.kind!=='q') return true;
+  const q=Q[st.key]; if(q.optional) return true;
+  const v=ans[st.key];
+  if(q.type==='multi'){
+    const hasOther=q.other&&ans[st.key+'_other']&&ans[st.key+'_other'].trim();
+    if(q.other&&ans[st.key+'_other']!==undefined&&!ans[st.key+'_other'].trim()) {err('اكتب الاحتياج في خانة «أخرى» أو ألغِ اختيارها.');return false;}
+    if(!(v&&v.length)&&!hasOther){err('اختر إجابة واحدة على الأقل.');return false;}
+    return true;
+  }
+  if(v===undefined||v===''){err('اختر إجابة للمتابعة.');return false;}
+  return true;
+}
+function err(m){const e=$('#err'); if(e){e.textContent=m;}}
+
+function next(){
+  if(!valid()) return;
+  if(idx<steps.length-1){idx++;dir=1;render();
+    const sh=$('#shell').getBoundingClientRect(); if(sh.top<0||sh.top>innerHeight*.4) $('#shell').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&!e.shiftKey&&document.activeElement&&document.activeElement.tagName!=='TEXTAREA'&&$('#next')){
+    const r=$('#shell').getBoundingClientRect(); if(r.top<innerHeight&&r.bottom>0){e.preventDefault();next();}
+  }
+});
+
+let sent=false;
+function submit(){
+  stage.innerHTML=`<div class="q done"><div class="check" style="background:var(--mint);color:var(--teal)"><svg width="40" height="40"><use href="#i-clock"/></svg></div><h3>جاري الإرسال…</h3></div>`;
+  $('#svSec').innerHTML='';$('#svCount').textContent='';
+  if(sent){thanks();return;}
+  const f=$('#gf'); f.innerHTML='';
+  const add=(n,v)=>{const i=document.createElement('input');i.type='hidden';i.name=n;i.value=v;f.appendChild(i);};
+  const pages=buildSteps();
+  for(const key in Q){
+    const q=Q[key]; if(!(key in ans) && !(ans[key+'_other']!==undefined)) continue;
+    const v=ans[key];
+    if(Array.isArray(v)) v.forEach(x=>add('entry.'+q.id,x));
+    else if(v!==undefined && v!=='') add('entry.'+q.id, v);
+    if(q.other && ans[key+'_other'] && ans[key+'_other'].trim()){
+      add('entry.'+q.id,'__other_option__'); add('entry.'+q.id+'.other_option_response',ans[key+'_other'].trim());
+    }
+  }
+  add('pageHistory',pages.join(','));
+  add('fvv','1');
+  idx=steps.length-1;
+  let finished=false; const done=()=>{if(finished)return;finished=true;sent=true;thanks();};
+  $('#gf_sink').onload=done;
+  try{f.submit();}catch(e){}
+  setTimeout(done,2500);
+}
+
+function thanks(){
+  const url=location.href.split('#')[0];
+  const msg='شارك برأيك في «وصال» — منصة ذكية توصل الدعم الصحي لمن يحتاجه. الاستبيان 3 دقائق فقط 💚 ';
+  stage.innerHTML=`<div class="q done"><div class="check"><svg width="46" height="46"><use href="#i-check"/></svg></div><h3>شكرًا لك! 💚</h3><p>وصلتنا إجاباتك. صوتك يساعدنا نبني «وصال» عشان يوصل الدعم الصحي لمستحقيه بسرعة وعدالة.<br><b>وشارك الاستبيان مع غيرك عشان يكون أثرك أكبر.</b></p>
+  <div class="share">
+    <a class="btn btn-primary" href="https://wa.me/?text=${encodeURIComponent(msg+url)}" target="_blank" rel="noopener">مشاركة عبر واتساب</a>
+    <a class="btn btn-ghost" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(msg)}&url=${encodeURIComponent(url)}" target="_blank" rel="noopener">مشاركة على X</a>
+    <button class="btn btn-ghost" id="copy">نسخ الرابط</button>
+  </div></div>`;
+  $('#bar').style.width='100%';
+  $('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(url);$('#copy').textContent='تم النسخ ✓';}catch(e){$('#copy').textContent=url;}};
+}
+
+render();
+
+addEventListener('scroll',()=>$('#nav').classList.toggle('scrolled',scrollY>10),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el);});
+</script>
+</body>
+</html>
